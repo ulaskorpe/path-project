@@ -1,0 +1,234 @@
+{
+	"info": {
+		"_postman_id": "c66967b9-69ef-48f9-b707-7f365cb39392",
+		"name": "path-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get-token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "broderick_price",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://path_project.test/api/get-jwt-token",
+					"protocol": "http",
+					"host": [
+						"path_project",
+						"test"
+					],
+					"path": [
+						"api",
+						"get-jwt-token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "place-order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "jwt-token",
+						"value": "NTc3MjAyMjA0MjYyMDEyNDY=.cGF0aC5hcGk=",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "product_id",
+							"value": "36",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://path_project.test/api/place-order",
+					"protocol": "http",
+					"host": [
+						"path_project",
+						"test"
+					],
+					"path": [
+						"api",
+						"place-order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "jwt-token",
+						"value": "NTc3MjAyMjA0MjYyMDEyNDY=.cGF0aC5hcGk=",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "product_id",
+							"value": "33",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "13",
+							"description": "send zero to delete ",
+							"type": "text"
+						},
+						{
+							"key": "order_code",
+							"value": "7017",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://path_project.test/api/update-order",
+					"protocol": "http",
+					"host": [
+						"path_project",
+						"test"
+					],
+					"path": [
+						"api",
+						"update-order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order-detail",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "jwt-token",
+						"value": "NTc3MjAyMjA0MjYyMDEyNDY=.cGF0aC5hcGk=",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "order_code",
+							"value": "7017",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://path_project.test/api/order-detail",
+					"protocol": "http",
+					"host": [
+						"path_project",
+						"test"
+					],
+					"path": [
+						"api",
+						"order-detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list-orders",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "jwt-token",
+						"value": "NTc3MjAyMjA0MjYyMDEyNDY=.cGF0aC5hcGk=",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "order_code",
+							"value": "7017",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://path_project.test/api/list-orders",
+					"protocol": "http",
+					"host": [
+						"path_project",
+						"test"
+					],
+					"path": [
+						"api",
+						"list-orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-products",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "jwt-token",
+						"value": "NTc3MjAyMjA0MjYyMDEyNDY=.cGF0aC5hcGk=",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://path_project.test/api/get-products",
+					"protocol": "http",
+					"host": [
+						"path_project",
+						"test"
+					],
+					"path": [
+						"api",
+						"get-products"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
