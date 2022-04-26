@@ -1,0 +1,98 @@
+{% extends 'main_template.html.twig' %}
+
+{% block body %}
+
+
+    <div class="container">
+
+
+
+        <div class="row" style="margin-top: 200px">
+            <aside class="col-sm-4"></aside>
+            <aside class="col-sm-4">
+
+                <div class="card">
+                    <article class="card-body">
+
+                        <h4 class="card-title mb-4 mt-1">LOGIN</h4>
+                        <form id="login-form" action="{{ path("login_post") }}" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="token" value="{{ csrf_token('path.project') }}">
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input name="username" id="username" class="form-control" placeholder="Username" type="text">
+                                <span id="username_error"></span>
+                            </div> <!-- form-group// -->
+                            <div class="form-group">
+
+                                <label>Password</label>
+                                <input class="form-control" placeholder="******" type="password" name="password" id="password">
+                                <span id="password_error"></span>
+                            </div> <!-- form-group// -->
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+                            </div> <!-- form-group// -->
+                        </form>
+                    </article>
+                </div> <!-- card.// -->
+
+            </aside> <!-- col.// -->
+
+
+        </div> <!-- row.// -->
+    </div>
+
+
+
+{% endblock %}
+{% block scripts %}
+    <script>
+
+        $('#login-form').submit(function (e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+            var error = false;
+            if ($('#username').val() == '') {
+                $('#username_error').html('<span style="color: red">Please Enter Username</span>');
+                error = true;
+            } else {
+                $('#email_error').html('');
+            }
+            if ($('#password').val() == '') {
+                $('#password_error').html('<span style="color: red">Please enter password</span>');
+                error = true;
+            } else {
+                $('#password_error').html('');
+            }
+
+            if(error){
+                return false;
+            }
+
+            $.ajax({
+                type: 'POST',
+                url:  '/login-post',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (data){
+                    if(data=='ok'){
+                        swal('','Login Successful','success');
+
+
+                    }else{
+                        swal('','Not Found','error');
+                    }
+
+
+                    setTimeout(window.open('/','_self'), 10000);
+                }
+            })
+
+            //   swal("ok");
+           // save(formData, '', '', 'btn-1','');
+        });
+    </script>
+{% endblock %}
